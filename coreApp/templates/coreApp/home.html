@@ -1,0 +1,63 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h4 style="text-align: center; font-family: fantasy;">ARTIKELS</h4>
+            <hr>
+            <div class="card">
+                <div class="card-body">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Beberapa Artikel Terkait</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for artikel in artikel_5 %}
+                            <tr>
+                                <td><a href="{% url 'profil-artikel' artikel.id %}">{{artikel.short_line}}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="col-md-7">
+            <h4 style="text-align: center; font-family: fantasy;">BREAKING NEWS</h4>
+            <hr>
+            {% for berita in berita_5 %}
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-sm">        
+                        <tr>
+                            <th><h4 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;"><strong>{{berita.judul_berita}}</strong></h4></th>
+                        </tr>
+                        <tr>
+                            <td><p style="text-align: justify;">
+                                {{berita.short_line}}
+                                </p>
+                                <a class="btn btn-primary btn-block" href="#">See More</a>
+                                <br>
+                                <p style="text-align: right;">{{berita.tanggal}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+
+{% endblock content %}

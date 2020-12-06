@@ -1,0 +1,28 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 style="text-align: center;"><strong>{{artikel.short_line}}</strong></h3>
+                    <br>
+                    <hr>
+                    <br>
+                    <!-- https://github.com/mowoka -->
+                    <br>
+                    {{artikel.isi_artikel | safe}}
+                    <br>
+                    author : {{artikel.author}}
+                </div>
+            </div>
+        </div>
+        <!-- colom comentar -->
+    </div>
+</div>
+
+
+
+{% endblock content %}

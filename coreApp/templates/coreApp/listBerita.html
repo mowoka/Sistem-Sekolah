@@ -1,0 +1,49 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 style="text-align: center;"><strong>ABOUT NEWS</strong></h3>    
+            <hr>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-sm display" id="example">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;">Tanggal</th>
+                                    <th style="text-align: center;">News</th>
+                                    <th style="text-align: center;">ACITON</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for berita in beritas %}
+                                <tr style="border-bottom: 1px solid; text-align: center;">
+                                    <td>{{berita.tanggal}}</td>
+                                    <td>{{berita.judul_berita}} : {{berita.short_line}}</td>
+                                    <td><a class="btn btn-primary" href="{% url 'profil-berita' berita.id %}">VIEWS</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+            $('#example').DataTable( {
+                "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+            } );
+        } );
+</script>
+
+{% endblock content%}

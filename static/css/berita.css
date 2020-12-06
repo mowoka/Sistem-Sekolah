@@ -1,0 +1,28 @@
+#commentar{
+    margin: auto;
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid black;
+    /* background-color: #696969; */
+    text-align: justify;
+    
+}
+
+#text-commentar{
+    margin: auto;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+#berita_box{
+    width: 400px;
+    text-align: justify;
+}
+
+/* #commentar-2{
+    margin:auto;  
+    padding-top: 8px;
+    border-radius: 20px;
+    background-color:#A9A9A9;
+    height: 40px;
+} */

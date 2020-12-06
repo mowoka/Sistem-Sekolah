@@ -1,0 +1,50 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 style="text-align: center;"><strong>Contact Informations</strong></h3>    
+            <hr>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-stip table-sm display" id="example">
+                            <thead>
+                                <tr>
+                                    <th>Jenis Contact</th>
+                                    <th>Golongan</th>
+                                    <th>Nama</th>
+                                    <th>Nomor Handphone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contact in contact %}
+                                <tr>
+                                    <td>{{contact.jenis_contact}}</td>
+                                    <td>{{contact.nama_jenis}}</td>
+                                    <td>{{contact.nama}}</td>
+                                    <td>{{contact.nomor_hp}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        } );
+    } );
+</script>
+
+{% endblock content %}

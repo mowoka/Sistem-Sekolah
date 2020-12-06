@@ -1,0 +1,48 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content%}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 style="text-align: center;"><strong>ABOUT ARTIKELS</strong></h3>    
+            <hr>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-sm display" id="example">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center;">TIPE</th>
+                                    <th style="text-align: center;">ARTIKEL</th>
+                                    <th>ACITON</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for artikel in artikel %}
+                                <tr style="border-bottom: 1px solid;">
+                                    <td>{{artikel.tipe}}</td>
+                                    <td>{{artikel.judul_artikel}} : {{artikel.short_line}}</td>
+                                    <td><a class="btn btn-primary" href="{% url 'profil-artikel' artikel.id %}">VIEWS</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+        $('#example').DataTable( {
+            "lengthMenu": [[5, 10, 20, -1], [5, 10, 20, "All"]]
+        } );
+    } );
+</script>
+{% endblock content%}

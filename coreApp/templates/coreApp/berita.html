@@ -1,0 +1,120 @@
+{% include 'coreApp/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 style="text-align: center;"><strong>{{berita.judul_berita}}</strong></h3>
+                    <br>
+                    <hr>
+                    <br>
+                    <!-- https://github.com/mowoka -->
+                    <br>
+                    {{berita.isi_berita | safe}}
+                    <br>
+                    Note : {{berita.note}}
+                </div>
+            </div>
+        </div>
+        <!-- colom comentar -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <label for="" class="btn btn-info btn-block">Commentar</label>
+                    <div id="commentar">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {% for comment in commentar %}
+                                <div id="text-commentar">
+                                    <p>{{comment.jurusan}}, {{comment.nama}} : {{comment.commentar}}?</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <form action="" id="form">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" placeholder="Nama" name="nama">
+                                <input style="margin-left: 12px;" type="text" placeholder="Jurusan" name="jurusan">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <textarea name="commentar" id="" cols="45" rows="1" required></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <input type="submit" value="Commment" class="btn btn-success btn-block">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var form = document.getElementById('form')
+
+    var idBerita = '{{berita.id}}'
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+
+        if(form.nama.value == "" || form.jurusan.value == "" || form.commentar.value == ""){
+            alert('harap isi bagian yang kosong')
+        }
+        else{
+            submitComment()
+            form.nama.value = ""
+            form.jurusan.value = ""
+            form.commentar.value = ""
+        }
+    })
+
+    function submitComment(){
+        console.log('process submit commentar')
+        var commentar = {
+            'idBerita': null,
+            'nama': null,
+            'jurusan': null,
+            'commentar' : null,
+        }
+
+        if (form.nama.value != "" || form.jurusan.value != "" || form.commentar.value != ""){
+            commentar.idBerita = idBerita
+            commentar.nama = form.nama.value
+            commentar.jurusan = form.jurusan.value
+            commentar.commentar = form.commentar.value
+        }
+
+        var url = '/comment_berita/'
+
+        fetch(url,{
+            method: 'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body:JSON.stringify({'form':commentar})
+        })
+
+        .then((response) => response.json())
+        .then((data)=>{
+            console.log('success', data);
+            
+            location.reload();
+        })
+
+    }
+</script>
+
+
+{% endblock content %}

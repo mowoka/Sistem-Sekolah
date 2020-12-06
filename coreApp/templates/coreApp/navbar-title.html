@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="container">
+    <div id="nav-slide-1">
+        <div class="row" id="nav-row-1">
+            <div class="col-sm">
+                <p><i class="fa fa-phone" aria-hidden="true"></i>
+                    <strong>Telp : 022921399214912</strong></p>
+            </div>
+            <div class="col-sm">
+                <p><i class="fa fa-envelope" aria-hidden="true"></i>
+                    <strong>Email : sekolah@sekolah.sch.id</strong></p>
+            </div>
+            <div class="col-sm">
+                <p><i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <strong>Alamat : JL Cigugur Tengah No.44 Cimahi Tengah</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="nav-slide-2">
+    <div class="container">
+        <div id="nav-image-2">
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><img id="image-nav-2" src="{% static 'images/Logo_tip.png' %}" alt="">
+                    </td>
+                    <td><div id="nav-title">
+                        <h2><strong>SEKOLAH NEGERI X CIMAHI</strong></h2>
+                        <h6>Sekolah Dengan Mutu Dan Standar Tinggi Dengan Menciptakan Lulusan Yang Bersaing Di Industri</h6>
+                    </div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Beranda</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'osis' %}">Osis</a>
+              </div>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'list-berita' %}">News</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link " href="{% url 'list-artikel' %}">Artikels</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link " href="{% url 'contact' %}">Kontak</a>
+        </li>
+    </ul>
+    </div>
+</nav>
